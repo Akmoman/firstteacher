@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سجل المعلم الأول التفاعلي | 2026 - 2027</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Cairo', 'sans-serif'] },
+                    colors: {
+                        primary: { 500: '#1e40af', 600: '#1e3a8a', 900: '#0f172a' },
+                        accent: '#f59e0b',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Cairo', sans-serif; }
+        
+        .tab-content { display: none; animation: fadeIn 0.3s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb { background: #475569; }
+
+        /* Inputs */
+        .form-input, .form-select {
+            width: 100%; padding: 0.5rem; border-radius: 0.375rem; border: 1px solid #d1d5db;
+            background-color: #f9fafb; transition: all 0.2s; font-family: inherit;
+        }
+        .dark .form-input, .dark .form-select { background-color: #1e293b; border-color: #334155; color: #e2e8f0; }
+        .form-input:focus, .form-select:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 2px rgba(59,130,246,0.2); }
+        
+        /* Inline Editable Inputs (Tables) */
+        .inline-input, .inline-select {
+            width: 100%; background: transparent; border: 1px solid transparent; 
+            padding: 4px; border-radius: 4px; transition: 0.2s; text-align: inherit;
+        }
+        .inline-input:focus, .inline-input:hover, .inline-select:focus, .inline-select:hover { border-color: #cbd5e1; background: rgba(255,255,255,0.5); }
+        .dark .inline-input:focus, .dark .inline-input:hover, .dark .inline-select:focus, .dark .inline-select:hover { border-color: #475569; background: rgba(0,0,0,0.2); }
+
+        /* Glass Panel */
+        .glass-panel { background: rgba(255, 255, 255, 0.95); border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+        .dark .glass-panel { background: rgba(30, 41, 59, 0.95); border-color: #334155; }
+        
+        /* Timeline */
+        .timeline-container { position: relative; padding-inline-start: 1.5rem; }
+        .timeline-container::before { content: ''; position: absolute; top: 0; bottom: 0; right: 0.5rem; width: 2px; background: #cbd5e1; }
+        .dark .timeline-container::before { background: #475569; }
+        .timeline-item::before { content: ''; position: absolute; right: 0.2rem; margin-top: 0.3rem; width: 0.75rem; height: 0.75rem; border-radius: 50%; background: #3b82f6; border: 2px solid white; }
+        .dark .timeline-item::before { border-color: #1e293b; }
+
+        /* Print Styles */
+        @media print {
+            body { background: white !important; color: black !important; }
+            #sidebar, #mobile-header, .no-print, #view-landing, #view-hub { display: none !important; }
+            #view-app { display: block !important; }
+            main { margin: 0 !important; padding: 0 !important; width: 100% !important; overflow: visible !important; height: auto !important; }
+            .tab-content { display: block !important; page-break-after: always; animation: none !important; margin-bottom: 2rem;}
+            .glass-panel { border: 1px solid #ccc !important; box-shadow: none !important; background: white !important; page-break-inside: avoid; margin-bottom: 1rem; }
+            .dark { background: white !important; color: black !important; }
+            .dark .glass-panel, .dark input, .dark textarea, .dark select { border-color: #ccc !important; background: white !important; color: black !important; }
+            * { color: black !important; }
+            input, textarea, select { border: none !important; background: transparent !important; resize: none !important; box-shadow: none !important; padding: 0 !important; -webkit-appearance: none; appearance: none; }
+            textarea { height: auto !important; overflow: visible !important; }
+            .form-input, .form-select { border-bottom: 1px dashed #ccc !important; border-radius: 0 !important; }
+            .inline-input, .inline-select { border: none !important; }
+            .print-page-break { page-break-before: always; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-gray-800 dark:bg-slate-900 dark:text-gray-200 transition-colors duration-300">
+
+    
+    <!-- ===== VIEW 1: LANDING ===== -->
+    <div id="view-landing" class="no-print min-h-screen flex items-center justify-center p-6 relative overflow-hidden" style="background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 55%,#1e40af 100%)">
+        <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image:radial-gradient(circle at 20% 20%,#f59e0b 0,transparent 35%),radial-gradient(circle at 80% 80%,#60a5fa 0,transparent 40%)"></div>
+        <div class="absolute top-6 left-6 text-white/80"><button onclick="toggleDarkMode()" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition" title="الوضع الليلي"><i class="fa-solid fa-moon"></i></button></div>
+        <div class="relative z-10 w-full max-w-2xl text-center text-white">
+            <div class="mx-auto w-24 h-24 rounded-3xl bg-white/10 border border-white/20 backdrop-blur flex items-center justify-center mb-6 shadow-2xl"><i class="fa-solid fa-book-open-reader text-5xl text-accent"></i></div>
+            <p class="text-blue-200 font-semibold">سلطنة عمان — وزارة التعليم</p>
+            <h1 class="text-4xl md:text-6xl font-extrabold mt-3 mb-3">سجل المعلم الأول</h1>
+            <input type="text" id="landing-year" oninput="syncYear(this.value)" title="اضغط للتعديل" class="w-full bg-transparent border-b border-dashed border-white/40 focus:border-accent outline-none text-center text-xl md:text-2xl text-blue-100 font-bold mb-8 pb-1" value="للعام الدراسي ٢٠٢٦ / ٢٠٢٧ م">
+            <div class="bg-white/10 border border-white/20 backdrop-blur rounded-2xl p-5 text-right grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+                <div><span class="text-xs text-blue-200 block">اسم المعلم الأول</span><strong id="landing-name">—</strong></div>
+                <div><span class="text-xs text-blue-200 block">المادة / المجال</span><strong id="landing-subject">—</strong></div>
+                <div><span class="text-xs text-blue-200 block">المدرسة</span><strong id="landing-school">—</strong></div>
+                <div><span class="text-xs text-blue-200 block">المحافظة التعليمية</span><strong id="landing-gov">—</strong></div>
+            </div>
+            <button onclick="showView('hub')" class="bg-accent hover:bg-amber-400 text-slate-900 font-extrabold text-lg px-10 py-4 rounded-2xl shadow-xl transition transform hover:scale-105"><i class="fa-solid fa-door-open ml-2"></i> الدخول إلى السجل</button>
+            <p class="text-xs text-blue-200/80 mt-8">إشراف الأستاذ: خميس بن فايل الحربي &nbsp;•&nbsp; برمجة الأستاذ: عبدالله بن خلف الرواحي</p>
+        </div>
+    </div>
+
+    <!-- ===== VIEW 2: HUB (tab buttons as in the Word record) ===== -->
+    <div id="view-hub" class="no-print hidden min-h-screen">
+        <header class="bg-primary-600 text-white shadow-lg sticky top-0 z-30">
+            <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+                <button onclick="showView('landing')" class="flex items-center gap-2 bg-white/10 hover:bg-white/20 rounded-lg px-3 py-2 text-sm font-bold"><i class="fa-solid fa-house"></i> الواجهة</button>
+                <h1 class="font-extrabold text-lg md:text-2xl flex items-center gap-2"><i class="fa-solid fa-book-open-reader text-accent"></i> سجل المعلم الأول</h1>
+                <button onclick="toggleDarkMode()" class="w-10 h-10 rounded-lg bg-white/10 hover:bg-white/20" title="الوضع الليلي"><i class="fa-solid fa-moon"></i></button>
+            </div>
+        </header>
+        <div class="max-w-6xl mx-auto p-4 md:p-8">
+            <div class="text-center mb-6">
+                <h2 class="text-2xl md:text-3xl font-extrabold text-primary-600 dark:text-blue-400">تبويبات السجل</h2>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">اختر التبويب لفتحه — مرتبة كما في سجل المعلم الأول (الوورد)</p>
+            </div>
+            <div id="hub-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4"></div>
+            <div class="mt-10 flex flex-wrap gap-3 justify-center">
+                <button onclick="prepareAndPrint()" class="bg-green-600 hover:bg-green-700 text-white font-bold px-5 py-2.5 rounded-xl shadow"><i class="fa-solid fa-print ml-2"></i> طباعة السجل كامل</button>
+                <button onclick="resetData()" class="bg-red-50 hover:bg-red-100 text-red-600 font-bold px-5 py-2.5 rounded-xl border border-red-200"><i class="fa-solid fa-trash-can ml-2"></i> تهيئة وحذف البيانات</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== VIEW 3: SECTION CONTENT ===== -->
+    <div id="view-app" class="hidden">
+        <div id="app-topbar" class="no-print bg-primary-600 text-white shadow-lg sticky top-0 z-30">
+            <div class="max-w-5xl mx-auto px-3 py-2.5 flex items-center justify-between gap-2">
+                <button onclick="showView('hub')" class="flex items-center gap-2 bg-white/10 hover:bg-white/20 rounded-lg px-3 py-2 text-sm font-bold whitespace-nowrap"><i class="fa-solid fa-table-cells-large"></i> التبويبات</button>
+                <div class="flex items-center gap-2 min-w-0">
+                    <button onclick="stepSection(-1)" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20" title="السابق"><i class="fa-solid fa-chevron-right"></i></button>
+                    <div class="text-center min-w-0"><div id="app-title" class="font-extrabold truncate text-sm md:text-lg">—</div><div id="app-count" class="text-[11px] text-blue-200"></div></div>
+                    <button onclick="stepSection(1)" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20" title="التالي"><i class="fa-solid fa-chevron-left"></i></button>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="prepareAndPrint()" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20" title="طباعة"><i class="fa-solid fa-print"></i></button>
+                    <button onclick="toggleDarkMode()" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20" title="الوضع الليلي"><i class="fa-solid fa-moon"></i></button>
+                </div>
+            </div>
+        </div>
+
+
+    <main class="p-4 md:p-8 searchable-container relative">
+        
+        <!-- SECTION: Cover & Dashboard -->
+        <section id="cover" class="tab-content active max-w-5xl mx-auto">
+            <div class="glass-panel rounded-2xl p-8 mb-8 text-center border-t-8 border-primary-500 relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 text-9xl text-blue-50 dark:text-slate-800 opacity-50 z-0"><i class="fa-solid fa-book"></i></div>
+                <div class="relative z-10">
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-primary-600 dark:text-blue-400 mb-2"><input type="text" id="cover-title" oninput="saveInputs()" class="bg-transparent border-none text-center outline-none w-full font-extrabold" value="سجل المعلم الأول"></h2>
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-600 dark:text-gray-300 mb-8"><input type="text" id="cover-year" oninput="saveInputs()" class="bg-transparent border-none text-center outline-none w-full" value="للعام الدراسي ٢٠٢٦ / ٢٠٢٧ م"></h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-right bg-white/50 dark:bg-slate-800/50 p-6 rounded-xl backdrop-blur-sm">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1">المدرسة</label>
+                            <input type="text" id="cover-school" oninput="saveInputs()" class="form-input text-lg font-bold" placeholder="أدخل اسم المدرسة">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1">المحافظة التعليمية</label>
+                            <input type="text" id="cover-gov" oninput="saveInputs()" class="form-input text-lg font-bold" placeholder="أدخل المحافظة">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1">اسم المعلم الأول</label>
+                            <input type="text" id="cover-name" oninput="saveInputs()" class="form-input text-lg font-bold" placeholder="أدخل اسمك">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1">المادة / المجال</label>
+                            <input type="text" id="cover-subject" oninput="saveInputs()" class="form-input text-lg font-bold" placeholder="أدخل المادة">
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 pt-4 border-t border-gray-200 dark:border-slate-700 flex flex-col md:flex-row justify-between items-center text-sm font-bold text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-slate-800/80 p-4 rounded-xl shadow-inner">
+                        <div class="mb-3 md:mb-0 flex items-center gap-3">
+                            <div class="bg-blue-100 text-blue-600 w-8 h-8 flex items-center justify-center rounded-lg dark:bg-blue-900/30 dark:text-blue-400"><i class="fa-solid fa-user-tie"></i></div>
+                            <span>إشراف الأستاذ: خميس بن فايل الحربي</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="bg-green-100 text-green-600 w-8 h-8 flex items-center justify-center rounded-lg dark:bg-green-900/30 dark:text-green-400"><i class="fa-solid fa-laptop-code"></i></div>
+                            <span>برمجة الأستاذ: عبدالله بن خلف الرواحي</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Stats (No Print) -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 no-print">
+                <div class="glass-panel p-4 rounded-xl flex flex-col items-center justify-center text-center">
+                    <i class="fa-solid fa-users text-3xl text-blue-500 mb-2"></i>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">المعلمين</span>
+                    <strong class="text-2xl" id="stat-teachers">0</strong>
+                </div>
+                <div class="glass-panel p-4 rounded-xl flex flex-col items-center justify-center text-center">
+                    <i class="fa-solid fa-shoe-prints text-3xl text-green-500 mb-2"></i>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">الزيارات</span>
+                    <strong class="text-2xl" id="stat-visits">0</strong>
+                </div>
+                <div class="glass-panel p-4 rounded-xl flex flex-col items-center justify-center text-center">
+                    <i class="fa-solid fa-chalkboard-user text-3xl text-purple-500 mb-2"></i>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">برامج الإنماء</span>
+                    <strong class="text-2xl" id="stat-pd">0</strong>
+                </div>
+                <div class="glass-panel p-4 rounded-xl flex flex-col items-center justify-center text-center">
+                    <i class="fa-solid fa-comments text-3xl text-orange-500 mb-2"></i>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">المداولات</span>
+                    <strong class="text-2xl" id="stat-dir">0</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: Tasks -->
+        <section id="tasks" class="tab-content max-w-5xl mx-auto">
+            <h2 class="text-3xl font-bold mb-6 border-r-4 border-indigo-500 pr-3">المهام الأساسية للمعلم الأول</h2>
+            <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm">ملخص لأهم المهام والأدوار (الـ 35 مهمة) الموكلة للمعلم الأول مقسمة حسب المجالات:</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Planning -->
+                <div class="glass-panel p-5 rounded-xl border-t-4 border-blue-500">
+                    <h3 class="font-bold text-lg mb-3 flex items-center gap-2 text-blue-700 dark:text-blue-400"><i class="fa-solid fa-calendar-check"></i> ١. مجال التخطيط والإعداد</h3>
+                    <ul class="list-disc list-inside text-sm space-y-2 text-gray-700 dark:text-gray-300">
+                        <li>إعداد خطة سنوية شاملة لعمل القسم.</li>
+                        <li>المشاركة في إعداد الخطة المدرسية العامة.</li>
+                        <li>متابعة الخطط الفصلية واليومية للمعلمين وتوجيههم.</li>
+                        <li>توزيع المقررات والجدول الدراسي بين معلمي المادة.</li>
+                        <li>حصر الاحتياجات من الوسائل والمقررات الدراسية.</li>
+                    </ul>
+                </div>
+                <!-- Supervision -->
+                <div class="glass-panel p-5 rounded-xl border-t-4 border-green-500">
+                    <h3 class="font-bold text-lg mb-3 flex items-center gap-2 text-green-700 dark:text-green-400"><i class="fa-solid fa-eye"></i> ٢. مجال الإشراف والمتابعة</h3>
+                    <ul class="list-disc list-inside text-sm space-y-2 text-gray-700 dark:text-gray-300">
+                        <li>تنفيذ الزيارات الصفية التوجيهية والتقويمية.</li>
+                        <li>متابعة أداء المعلمين داخل الغرفة الصفية.</li>
+                        <li>الاطلاع المستمر على أعمال الطلاب وكراساتهم.</li>
+                        <li>متابعة تفعيل المختبرات ومصادر التعلم.</li>
+                        <li>إجراء المداولات الفردية وتقديم التغذية الراجعة.</li>
+                    </ul>
+                </div>
+                <!-- Professional Development -->
+                <div class="glass-panel p-5 rounded-xl border-t-4 border-purple-500">
+                    <h3 class="font-bold text-lg mb-3 flex items-center gap-2 text-purple-700 dark:text-purple-400"><i class="fa-solid fa-chalkboard-user"></i> ٣. مجال التنمية المهنية</h3>
+                    <ul class="list-disc list-inside text-sm space-y-2 text-gray-700 dark:text-gray-300">
+                        <li>تحديد الاحتياجات التدريبية لمعلمي القسم.</li>
+                        <li>تخطيط وتنفيذ مشاغل وأوراق عمل داخلية.</li>
+                        <li>تشجيع تبادل الزيارات والدروس التطبيقية.</li>
+                        <li>عقد حلقات النقاش ومجتمعات التعلم المهني.</li>
+                        <li>تشجيع البحث الإجرائي والابتكار التربوي.</li>
+                    </ul>
+                </div>
+                <!-- Evaluation & Admin -->
+                <div class="glass-panel p-5 rounded-xl border-t-4 border-orange-500">
+                    <h3 class="font-bold text-lg mb-3 flex items-center gap-2 text-orange-700 dark:text-orange-400"><i class="fa-solid fa-chart-line"></i> ٤. التقويم والمهام الإدارية</h3>
+                    <ul class="list-disc list-inside text-sm space-y-2 text-gray-700 dark:text-gray-300">
+                        <li>متابعة أدوات التقويم المستمر والاختبارات.</li>
+                        <li>تحليل نتائج الطلاب ووضع الخطط العلاجية والإثرائية.</li>
+                        <li>تقييم أداء المعلمين فنياً ورفع التقارير الدورية.</li>
+                        <li>إدارة اجتماعات القسم وتدوين المحاضر.</li>
+                        <li>نقل وتوضيح التعاميم والنشرات الواردة للمعلمين.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="profile" class="tab-content max-w-5xl mx-auto">
+            <h2 class="text-3xl font-bold mb-6 border-r-4 border-blue-500 pr-3">بيانات المعلم الأول الشخصية والمهنية</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="glass-panel p-6 rounded-xl">
+                    <h3 class="font-bold text-lg mb-4 flex items-center gap-2"><i class="fa-solid fa-address-card text-blue-500"></i> البيانات الوظيفية</h3>
+                    <div class="space-y-3">
+                        <div><label class="text-xs text-gray-500">الاسم</label><input type="text" id="prof-name" oninput="saveInputs()" class="form-input" placeholder="الاسم الرباعي"></div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div><label class="text-xs text-gray-500">رقم الملف</label><input type="text" id="prof-id" oninput="saveInputs()" class="form-input"></div>
+                            <div><label class="text-xs text-gray-500">تاريخ التعيين</label><input type="text" id="prof-date" oninput="saveInputs()" class="form-input" placeholder="مثال: ١ سبتمبر ٢٠٠٧"></div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div><label class="text-xs text-gray-500">المؤهل العلمي</label><input type="text" id="prof-degree" oninput="saveInputs()" class="form-input" placeholder="مثال: بكالوريوس تربية"></div>
+                            <div><label class="text-xs text-gray-500">التخصص</label><input type="text" id="prof-spec" oninput="saveInputs()" class="form-input" placeholder="مثال: جغرافيا"></div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div><label class="text-xs text-gray-500">تاريخ المؤهل</label><input type="text" id="prof-degree-date" oninput="saveInputs()" class="form-input"></div>
+                            <div><label class="text-xs text-gray-500">مكان الحصول عليه</label><input type="text" id="prof-degree-place" oninput="saveInputs()" class="form-input"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-xl">
+                    <h3 class="font-bold text-lg mb-4 flex items-center gap-2"><i class="fa-solid fa-phone text-green-500"></i> بيانات التواصل</h3>
+                    <div class="space-y-3">
+                        <div><label class="text-xs text-gray-500">هاتف العمل</label><input type="text" id="prof-work-phone" oninput="saveInputs()" class="form-input"></div>
+                        <div><label class="text-xs text-gray-500">الهاتف النقال</label><input type="text" id="prof-mobile" oninput="saveInputs()" class="form-input"></div>
+                        <div><label class="text-xs text-gray-500">البريد الإلكتروني</label><input type="email" id="prof-email" oninput="saveInputs()" class="form-input"></div>
+                    </div>
+                    
+                    <h3 class="font-bold text-lg mt-6 mb-4 flex items-center gap-2"><i class="fa-solid fa-microscope text-purple-500"></i> الدراسات والبحوث والمشاغل</h3>
+                    <textarea id="prof-research" oninput="saveInputs(); autoResize(this)" class="form-input h-24" placeholder="أدخل البحوث والدراسات (مثال: بحث إجرائي بعنوان...)"></textarea>
+                    <p class="text-xs text-gray-500 mt-2">* باقي الإنجازات متوفرة في خانة الإنجازات ضمن برنامج (إجادة).</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-panel p-6 rounded-xl">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-lg flex items-center gap-2"><i class="fa-solid fa-calendar-day text-red-500"></i> الإجازات الرسمية</h3>
+                        <button onclick="addHoliday()" class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded no-print hover:bg-red-200">+ إضافة</button>
+                    </div>
+                    <div id="holidays-container" class="space-y-2 text-sm">
+                        <!-- Populated via JS -->
+                    </div>
+                </div>
+                
+                <div class="glass-panel p-6 rounded-xl">
+                    <h3 class="font-bold text-lg mb-4 flex items-center gap-2"><i class="fa-solid fa-book-bookmark text-orange-500"></i> طبعات الكتب المعتمدة</h3>
+                    <div class="bg-orange-50 dark:bg-orange-900/20 text-orange-800 dark:text-orange-200 p-3 rounded text-sm mb-3">
+                        ملاحظة: يتم إدراج دليل الطبعات الورقي المعتمد من الوزارة في ملف سجلات المعلم الأول بالقسم.
+                    </div>
+                    <textarea id="prof-books" oninput="saveInputs(); autoResize(this)" class="form-input h-20" placeholder="يمكنك كتابة ملاحظات إضافية حول الكتب هنا..."></textarea>
+                </div>
+            </div>
+        </section>
+
+        <section id="teachers" class="tab-content max-w-5xl mx-auto">
+            <div class="flex justify-between items-center mb-6 border-r-4 border-green-500 pr-3">
+                <h2 class="text-3xl font-bold">بيانات الشعب والمعلمين وأولويات التطوير</h2>
+            </div>
+
+            <div class="glass-panel p-6 rounded-xl mb-6 no-print bg-green-50/50 dark:bg-green-900/10 border border-green-200 dark:border-green-800">
+                <form id="add-teacher-form" onsubmit="addTeacher(event)" class="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
+                    <div><label class="text-xs font-bold mb-1 block">اسم المعلم</label><input type="text" id="t-name" required class="form-input"></div>
+                    <div><label class="text-xs font-bold mb-1 block">الصفوف المسندة</label><input type="text" id="t-classes" placeholder="مثال: 5، 6، 7" class="form-input"></div>
+                    <div><label class="text-xs font-bold mb-1 block">عدد الحصص</label><input type="number" id="t-load" min="1" max="35" required class="form-input"></div>
+                    <div><label class="text-xs font-bold mb-1 block">الدرجة المالية</label><input type="text" id="t-grade" class="form-input"></div>
+                    <div><label class="text-xs font-bold mb-1 block">الخبرة (سنوات)</label><input type="number" id="t-exp" class="form-input"></div>
+                    
+                    <div class="md:col-span-3"><label class="text-xs font-bold mb-1 block">أولوية التطوير الحالية</label><input type="text" id="t-priority" placeholder="مثال: دورات متقدمة في طرق التدريس" class="form-input"></div>
+                    <div class="flex items-center gap-2 mb-2 md:col-span-1">
+                        <input type="checkbox" id="t-star" class="w-4 h-4 text-green-600 rounded">
+                        <label class="text-sm font-bold text-green-700 dark:text-green-400">معلم مجيد <i class="fa-solid fa-star"></i></label>
+                    </div>
+                    <div class="md:col-span-1 text-left">
+                        <button type="submit" class="w-full bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition font-bold"><i class="fa-solid fa-plus"></i> إضافة</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="glass-panel rounded-xl overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-center">
+                        <thead class="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300">
+                            <tr>
+                                <th class="p-3 text-right">اسم المعلم</th>
+                                <th class="p-3">الصفوف</th>
+                                <th class="p-3 w-40">النصاب (الحصص)</th>
+                                <th class="p-3">الدرجة</th>
+                                <th class="p-3">الخبرة</th>
+                                <th class="p-3">أولويات التطوير</th>
+                                <th class="p-3 no-print">إجراء</th>
+                            </tr>
+                        </thead>
+                        <tbody id="teachers-tbody" class="divide-y divide-gray-200 dark:divide-slate-700">
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: Timetable -->
+        <section id="timetable" class="tab-content max-w-5xl mx-auto">
+            <h2 class="text-3xl font-bold mb-6 border-r-4 border-yellow-500 pr-3">الجدول المدرسي للمعلم الأول</h2>
+            <p class="text-gray-500 mb-6 text-sm">يمكنك تعبئة الجدول الدراسي أدناه لتنظيم الحصص وفترات الفراغ. اضغط على الخلية للكتابة.</p>
+            
+            <div class="glass-panel rounded-xl overflow-hidden overflow-x-auto p-2">
+                <table class="w-full text-center table-fixed min-w-[700px] border-collapse">
+                    <thead class="bg-yellow-50 dark:bg-slate-800 text-yellow-800 dark:text-yellow-400">
+                        <tr>
+                            <th class="p-2 border border-yellow-200 dark:border-slate-700 w-24">اليوم/الحصة</th>
+                            <th class="p-2 border border-yellow-200 dark:border-slate-700">الأولى</th>
+                            <th class="p-2 border border-yellow-200 dark:border-slate-700">الثانية</th>
+                            <th class="p-2 border border-yellow-200 dark:border-slate-700">الثالثة</th>
+                            <th class="p-2 border border-yellow-200 dark:border-slate-700">الرابعة</th>
+                            <th class="p-2 border border-yellow-200 dark:border-slate-700">الخامسة</th>
+                            <th class="p-2 border border-yellow-200 dark:border-slate-700">السادسة</th>
+                            <th class="p-2 border border-yellow-200 dark:border-slate-700">السابعة</th>
+                            <th class="p-2 border border-yellow-200 dark:border-slate-700">الثامنة</th>
+                        </tr>
+                    </thead>
+                    <tbody id="timetable-tbody">
+                        <!-- Rendered by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="annual-plan" class="tab-content max-w-5xl mx-auto">
+            <h2 class="text-3xl font-bold mb-2 border-r-4 border-red-500 pr-3">خطة المادة</h2>
+            <p class="text-gray-500 mb-6 text-sm">خطة المادة موزعة على خمسة مجالات. أضف أهدافاً لكل مجال وحدد آلية التنفيذ وفترته. قابلة للتعديل والطباعة.</p>
+
+            <div class="glass-panel p-4 rounded-xl mb-6 no-print">
+                <h3 class="font-bold text-sm mb-3 text-center bg-cyan-50 dark:bg-slate-800 border border-cyan-100 dark:border-slate-700 rounded py-1.5">اختيار عناصر البحث</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+                    <div><label class="text-xs font-bold text-gray-500 block mb-1">المجال</label>
+                        <select id="gf-domain" onchange="setGoalFilter()" class="form-select text-sm"><option value="">--- الكل ---</option></select></div>
+                    <div><label class="text-xs font-bold text-gray-500 block mb-1">آلية التنفيذ</label>
+                        <select id="gf-status" onchange="setGoalFilter()" class="form-select text-sm">
+                            <option value="">--- الكل ---</option><option value="جاري التنفيذ">جاري التنفيذ</option><option value="لم ينفذ">لم ينفذ</option><option value="نفذ">نفذ</option>
+                        </select></div>
+                    <div><label class="text-xs font-bold text-gray-500 block mb-1">فترة التنفيذ من</label><input type="date" id="gf-from" onchange="setGoalFilter()" class="form-input text-sm"></div>
+                    <div><label class="text-xs font-bold text-gray-500 block mb-1">إلى</label><input type="date" id="gf-to" onchange="setGoalFilter()" class="form-input text-sm"></div>
+                </div>
+                <div class="mt-3 text-left"><button onclick="clearGoalFilter()" class="text-xs bg-gray-100 dark:bg-slate-700 hover:bg-gray-200 px-3 py-1 rounded font-bold">إعادة ضبط الفلاتر</button></div>
+            </div>
+
+            <div id="goals-container" class="space-y-6"></div>
+        </section>
+
+        <section id="pd-timeline" class="tab-content max-w-5xl mx-auto">
+            <div class="flex justify-between items-center mb-6 border-r-4 border-purple-500 pr-3">
+                <h2 class="text-3xl font-bold">برامج الإنماء المهني المنفذة (الخط الزمني)</h2>
+            </div>
+            
+            <div class="glass-panel p-4 rounded-xl mb-8 no-print bg-purple-50/50 dark:bg-purple-900/10 border border-purple-200 dark:border-purple-800">
+                <h3 class="text-sm font-bold mb-3 text-purple-800 dark:text-purple-300">إضافة برنامج جديد:</h3>
+                <form id="pd-form" onsubmit="addPDProgram(event)" class="grid grid-cols-1 md:grid-cols-6 gap-3">
+                    <div><input type="text" id="pd-date" placeholder="التاريخ (مثال: 28 سبتمبر)" required class="form-input text-sm"></div>
+                    <div class="md:col-span-2"><input type="text" id="pd-title" placeholder="عنوان البرنامج" required class="form-input text-sm"></div>
+                    <div><input type="text" id="pd-presenter" placeholder="المنفذ / المكان" required class="form-input text-sm"></div>
+                    <div><input type="text" id="pd-target" placeholder="المستهدفون / المدة" class="form-input text-sm"></div>
+                    <div class="flex gap-2">
+                        <select id="pd-type" class="form-select text-sm p-1">
+                            <option value="ورقة عمل">ورقة عمل</option>
+                            <option value="برنامج تدريبي">برنامج تدريبي</option>
+                            <option value="مشغل">مشغل</option>
+                            <option value="درس تطبيقي">درس تطبيقي</option>
+                        </select>
+                        <button type="submit" class="bg-purple-600 text-white px-4 py-1 rounded hover:bg-purple-700 font-bold"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Timeline -->
+            <div class="glass-panel p-8 rounded-xl">
+                <div id="timeline-wrapper" class="timeline-container space-y-6">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+        </section>
+
+        <section id="visits" class="tab-content max-w-5xl mx-auto">
+            <h2 class="text-3xl font-bold mb-6 border-r-4 border-teal-500 pr-3">الزيارات الصفية والدروس التطبيقية</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                <!-- Visits Table -->
+                <div class="glass-panel p-6 rounded-xl flex flex-col">
+                    <h3 class="font-bold text-lg mb-4 text-teal-700 flex items-center gap-2"><i class="fa-solid fa-shoe-prints"></i> خطة الزيارات الإشرافية الشهرية</h3>
+                    
+                    <div class="mb-4 no-print flex gap-2">
+                        <select id="v-month" class="form-select text-sm w-1/3">
+                            <option value="أغسطس">أغسطس</option><option value="سبتمبر">سبتمبر</option><option value="أكتوبر">أكتوبر</option>
+                            <option value="نوفمبر">نوفمبر</option><option value="ديسمبر">ديسمبر</option><option value="يناير">يناير</option>
+                            <option value="فبراير">فبراير</option><option value="مارس">مارس</option><option value="أبريل">أبريل</option>
+                            <option value="مايو">مايو</option><option value="يونيو">يونيو</option>
+                        </select>
+                        <input type="text" id="v-teacher" placeholder="اسم المعلم المزار" class="form-input text-sm w-1/3">
+                        <button onclick="addVisitRecord()" class="bg-teal-600 text-white px-4 rounded text-sm w-1/3 hover:bg-teal-700 font-bold">إضافة خطة زيارة</button>
+                    </div>
+                    
+                    <div class="overflow-x-auto flex-1">
+                        <table class="w-full text-sm">
+                            <thead class="bg-gray-100 dark:bg-slate-800 border-b border-gray-200 dark:border-slate-700">
+                                <tr>
+                                    <th class="p-2 text-right w-32">الشهر</th>
+                                    <th class="p-2 text-right">المعلم المزار</th>
+                                    <th class="p-2 no-print text-center w-10">إجراء</th>
+                                </tr>
+                            </thead>
+                            <tbody id="visits-tbody" class="divide-y divide-gray-200 dark:divide-slate-700">
+                                <!-- JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Peer Visits (تبادل الزيارات) -->
+                <div class="glass-panel p-6 rounded-xl border-r-4 border-pink-500">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-lg text-pink-700 flex items-center gap-2"><i class="fa-solid fa-handshake"></i> جداول تبادل الزيارات</h3>
+                        <button onclick="addPeerVisit()" class="text-xs bg-pink-100 text-pink-600 px-2 py-1 rounded no-print hover:bg-pink-200">+ إضافة</button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-xs text-center border dark:border-slate-600">
+                            <thead class="bg-pink-50 dark:bg-pink-900/30">
+                                <tr><th class="p-2 border dark:border-slate-600">المعلم الزائر</th><th class="p-2 border dark:border-slate-600">المعلم المزار</th><th class="p-2 border dark:border-slate-600">الشهر المستهدف</th><th class="p-1 border no-print"></th></tr>
+                            </thead>
+                            <tbody id="peer-visits-tbody">
+                                <!-- JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Applied Lessons -->
+                <div class="glass-panel p-6 rounded-xl border-r-4 border-yellow-500 lg:col-span-2">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-lg text-yellow-700 flex items-center gap-2"><i class="fa-solid fa-person-chalkboard"></i> خطة الدروس التطبيقية</h3>
+                        <button onclick="addAppliedLesson()" class="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded no-print hover:bg-yellow-200">+ إضافة درس</button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-center border dark:border-slate-600">
+                            <thead class="bg-yellow-50 dark:bg-yellow-900/20">
+                                <tr><th class="p-2 border">المنفذ</th><th class="p-2 border">موضوع الدرس</th><th class="p-2 border">الصف</th><th class="p-2 border">التاريخ المقترح</th><th class="p-1 border no-print w-8"></th></tr>
+                            </thead>
+                            <tbody id="applied-lessons-tbody">
+                                <!-- JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Discussion Panels -->
+                <div class="glass-panel p-6 rounded-xl border-r-4 border-indigo-500 lg:col-span-2">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-lg text-indigo-700 flex items-center gap-2"><i class="fa-solid fa-comments"></i> مجتمعات التعلم وحلقات النقاش</h3>
+                        <button onclick="addDiscussion()" class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded no-print hover:bg-indigo-200">+ إضافة حلقة</button>
+                    </div>
+                    <div id="discussions-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- JS -->
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="directives" class="tab-content max-w-5xl mx-auto">
+            <div class="flex justify-between items-center mb-6 border-r-4 border-orange-500 pr-3 no-print">
+                <div>
+                    <h2 class="text-3xl font-bold">التوجيهات والمداولات الفردية</h2>
+                    <p class="text-sm text-gray-500 mt-1">كل استمارة هنا ستتم طباعتها في صفحة A4 منفصلة تلقائياً.</p>
+                </div>
+                <button onclick="addDirectiveForm()" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded shadow-sm font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-plus"></i> استمارة جديدة
+                </button>
+            </div>
+            
+            <div id="directives-container" class="space-y-8">
+                <!-- Directives populated via JS -->
+            </div>
+        </section>
+
+        <section id="reports" class="tab-content max-w-5xl mx-auto">
+            <h2 class="text-3xl font-bold mb-6 border-r-4 border-gray-600 pr-3">الكشوف والتقارير الدورية</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <!-- Term Report -->
+                <div class="glass-panel p-6 rounded-xl md:col-span-2 border-t-4 border-gray-500">
+                    <h3 class="font-bold text-lg mb-3 flex items-center gap-2 text-gray-800 dark:text-gray-200"><i class="fa-solid fa-file-lines"></i> التقرير الفصلي للإنجازات</h3>
+                    <textarea id="term-report" oninput="saveInputs(); autoResize(this)" class="form-input min-h-[150px]" placeholder="اكتب هنا التقرير الفصلي المجمع لنسب النجاح، والإنجازات الخاصة بالقسم والمدرسة..."></textarea>
+                </div>
+
+                <!-- Academic Level -->
+                <div class="glass-panel p-6 rounded-xl flex flex-col">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-lg text-yellow-700 flex items-center gap-2"><i class="fa-solid fa-chart-bar"></i> متابعة المستوى التحصيلي</h3>
+                        <button onclick="addReportRow('academic')" class="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded no-print hover:bg-yellow-200">+ إضافة صف</button>
+                    </div>
+                    <div class="overflow-x-auto flex-1">
+                        <table class="w-full text-sm text-center border dark:border-slate-600">
+                            <thead class="bg-yellow-50 dark:bg-yellow-900/20">
+                                <tr><th class="p-2 border">الصف</th><th class="p-2 border">المادة</th><th class="p-2 border">نسبة النجاح</th><th class="p-2 border">ملاحظات</th><th class="p-2 border no-print w-8"></th></tr>
+                            </thead>
+                            <tbody id="academic-tbody">
+                                <!-- JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Educational Aids -->
+                <div class="glass-panel p-6 rounded-xl flex flex-col">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-lg text-blue-700 flex items-center gap-2"><i class="fa-solid fa-vr-cardboard"></i> كشف الوسائل التعليمية</h3>
+                        <button onclick="addReportRow('aids')" class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded no-print hover:bg-blue-200">+ إضافة وسيلة</button>
+                    </div>
+                    <div class="overflow-x-auto flex-1">
+                        <table class="w-full text-sm text-center border dark:border-slate-600">
+                            <thead class="bg-blue-50 dark:bg-blue-900/20">
+                                <tr><th class="p-2 border">اسم الوسيلة / التقنية</th><th class="p-2 border">المعلم المنتج/المستخدم</th><th class="p-2 border no-print w-8"></th></tr>
+                            </thead>
+                            <tbody id="aids-tbody">
+                                <!-- JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Circulars & Meetings -->
+                <div class="glass-panel p-6 rounded-xl md:col-span-2">
+                    <h3 class="font-bold text-lg mb-3 flex items-center gap-2 text-gray-700 dark:text-gray-300"><i class="fa-solid fa-envelope-open-text"></i> بيان النشرات والتعاميم الواردة</h3>
+                    <textarea id="rep-circulars" oninput="saveInputs(); autoResize(this)" class="form-input min-h-[100px] mb-6" placeholder="سجل هنا أرقام وتواريخ التعاميم الهامة التي تمت مناقشتها مع المعلمين..."></textarea>
+                    
+                    <div class="flex justify-between items-center mb-4 border-t pt-6 dark:border-slate-700">
+                        <h3 class="font-bold text-lg text-gray-700 dark:text-gray-300 flex items-center gap-2"><i class="fa-solid fa-handshake"></i> سجل الاجتماعات الإدارية والفنية</h3>
+                        <button onclick="addReportRow('meetings')" class="text-xs bg-gray-200 text-gray-700 px-2 py-1 rounded no-print hover:bg-gray-300 dark:bg-slate-700 dark:text-gray-300">+ إضافة اجتماع</button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-center border dark:border-slate-600">
+                            <thead class="bg-gray-100 dark:bg-slate-800">
+                                <tr><th class="p-2 border">موضوع الاجتماع</th><th class="p-2 border">التاريخ</th><th class="p-2 border">أهم المخرجات</th><th class="p-2 border no-print w-8"></th></tr>
+                            </thead>
+                            <tbody id="meetings-tbody">
+                                <!-- JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    </div><!-- /view-app -->
+
+    <script>
+        // --- Centralized App State (Loaded from LocalStorage or Defaults) ---
+        const monthsOptions = `<option value="أغسطس">أغسطس</option><option value="سبتمبر">سبتمبر</option><option value="أكتوبر">أكتوبر</option><option value="نوفمبر">نوفمبر</option><option value="ديسمبر">ديسمبر</option><option value="يناير">يناير</option><option value="فبراير">فبراير</option><option value="مارس">مارس</option><option value="أبريل">أبريل</option><option value="مايو">مايو</option><option value="يونيو">يونيو</option>`;
+        const defaultTimetable = {
+            'الأحد': ['','','','','','','',''],
+            'الإثنين': ['','','','','','','',''],
+            'الثلاثاء': ['','','','','','','',''],
+            'الأربعاء': ['','','','','','','',''],
+            'الخميس': ['','','','','','','','']
+        };
+
+        const defaultState = {
+            inputs: {}, // Stores all simple input/textarea values by ID
+            holidays: [],
+            teachers: [],
+            pdTimeline: [],
+            visits: [],
+            discussions: [],
+            goals: [],
+            peerVisits: [],
+            appliedLessons: [],
+            directives: [],
+            academic: [],
+            aids: [],
+            meetings: [],
+            timetable: JSON.parse(JSON.stringify(defaultTimetable))
+        };
+
+        let appState = JSON.parse(localStorage.getItem('seniorTeacherData_v2')) || JSON.parse(JSON.stringify(defaultState));
+
+        if (!Array.isArray(appState.goals)) appState.goals = [];
+
+        // --- Core Functions ---
+        function saveState() {
+            localStorage.setItem('seniorTeacherData_v2', JSON.stringify(appState));
+            updateDashboardStats();
+        }
+
+        function resetData() {
+            if(confirm('هل أنت متأكد من مسح جميع البيانات والعودة للنسخة الفارغة؟')) {
+                localStorage.removeItem('seniorTeacherData_v2');
+                location.reload();
+            }
+        }
+
+        function saveInputs() {
+            document.querySelectorAll('input[type="text"], input[type="email"], input[type="number"], textarea').forEach(el => {
+                if(el.id && !el.id.startsWith('t-') && !el.id.startsWith('pd-') && !el.id.startsWith('v-') && !el.id.startsWith('global-search')) {
+                    appState.inputs[el.id] = el.value;
+                }
+            });
+            saveState();
+        }
+
+        function loadInputs() {
+            for (const [id, value] of Object.entries(appState.inputs)) {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.value = value;
+                    if (el.tagName === 'TEXTAREA') autoResize(el);
+                }
+            }
+        }
+
+        function autoResize(el) {
+            el.style.height = 'auto';
+            el.style.height = (el.scrollHeight) + 'px';
+        }
+
+
+        // --- Views / Hub navigation (Word-record order) ---
+        const SECTIONS = [{"n": 1, "title": "الغلاف", "icon": "fa-book", "tab": "cover", "anchor": null, "color": "blue"}, {"n": 2, "title": "المهام الأساسية للمعلم الأول", "icon": "fa-list-check", "tab": "tasks", "anchor": null, "color": "indigo"}, {"n": 3, "title": "بيانات المعلم الأول", "icon": "fa-id-card", "tab": "profile", "anchor": null, "color": "sky"}, {"n": 4, "title": "طبعات الكتب المعتمدة", "icon": "fa-book-bookmark", "tab": "profile", "anchor": "طبعات الكتب المعتمدة", "color": "orange"}, {"n": 5, "title": "بيانات الشعب والمعلمين", "icon": "fa-users", "tab": "teachers", "anchor": null, "color": "green"}, {"n": 6, "title": "المعلمون المجيدون", "icon": "fa-star", "tab": "teachers", "anchor": null, "color": "yellow"}, {"n": 7, "title": "أولويات التطوير للمعلمين", "icon": "fa-arrow-trend-up", "tab": "teachers", "anchor": null, "color": "emerald"}, {"n": 8, "title": "خطة المادة", "icon": "fa-bullseye", "tab": "annual-plan", "anchor": null, "color": "red"}, {"n": 9, "title": "أنواع برامج الإنماء المهني", "icon": "fa-chart-line", "tab": "pd-timeline", "anchor": null, "color": "purple"}, {"n": 10, "title": "خطة الزيارات الصفية", "icon": "fa-shoe-prints", "tab": "visits", "anchor": "خطة الزيارات الإشرافية", "color": "teal"}, {"n": 11, "title": "الجدول المدرسي (الحصص)", "icon": "fa-calendar-week", "tab": "timetable", "anchor": null, "color": "amber"}, {"n": 12, "title": "جدول تبادل الزيارات بين المعلمين", "icon": "fa-handshake", "tab": "visits", "anchor": "جداول تبادل الزيارات", "color": "pink"}, {"n": 13, "title": "خطة الدروس التطبيقية", "icon": "fa-person-chalkboard", "tab": "visits", "anchor": "خطة الدروس التطبيقية", "color": "yellow"}, {"n": 14, "title": "حلقات النقاش ومجتمعات التعلم", "icon": "fa-comments", "tab": "visits", "anchor": "مجتمعات التعلم", "color": "indigo"}, {"n": 15, "title": "كشف تفريغي للاجتماعات", "icon": "fa-people-group", "tab": "reports", "anchor": "سجل الاجتماعات", "color": "slate"}, {"n": 16, "title": "كشف تفريغي للنشرات والرسائل", "icon": "fa-envelope-open-text", "tab": "reports", "anchor": "بيان النشرات", "color": "slate"}, {"n": 17, "title": "التقرير الفصلي", "icon": "fa-file-lines", "tab": "reports", "anchor": "التقرير الفصلي", "color": "cyan"}, {"n": 18, "title": "متابعة المستوى التحصيلي", "icon": "fa-chart-bar", "tab": "reports", "anchor": "متابعة المستوى التحصيلي", "color": "lime"}, {"n": 19, "title": "كشف الوسائل التعليمية", "icon": "fa-vr-cardboard", "tab": "reports", "anchor": "كشف الوسائل", "color": "blue"}, {"n": 20, "title": "الالتزام بالنشرات التوجيهية", "icon": "fa-clipboard-check", "tab": "directives", "anchor": null, "color": "rose"}, {"n": 21, "title": "التوجيهات التربوية", "icon": "fa-user-pen", "tab": "directives", "anchor": null, "color": "violet"}];
+        const COLORS = {blue:'#2563eb',indigo:'#4f46e5',sky:'#0284c7',orange:'#ea580c',green:'#16a34a',yellow:'#ca8a04',emerald:'#059669',red:'#dc2626',purple:'#9333ea',teal:'#0d9488',amber:'#d97706',pink:'#db2777',slate:'#475569',cyan:'#0891b2',lime:'#65a30d',rose:'#e11d48',violet:'#7c3aed'};
+        let currentSection = 0;
+
+        function showView(v) {
+            ['landing','hub','app'].forEach(x => document.getElementById('view-'+x).classList.toggle('hidden', x !== v));
+            if (v === 'landing') refreshLanding();
+            window.scrollTo(0,0);
+            try { history.replaceState(null,'','#'+v); } catch(e) {}
+        }
+
+        function syncYear(v) {
+            const c = document.getElementById('cover-year');
+            if (c) c.value = v;
+            appState.inputs['cover-year'] = v;
+            saveState();
+        }
+
+        function refreshLanding() {
+            const i = appState.inputs || {};
+            const set = (id,val,def) => document.getElementById(id).textContent = (val && val.trim()) ? val : def;
+            set('landing-name', i['cover-name'] || i['prof-name'], '—');
+            set('landing-subject', i['cover-subject'], '—');
+            set('landing-school', i['cover-school'], '—');
+            set('landing-gov', i['cover-gov'], '—');
+            document.getElementById('landing-year').value = (i['cover-year'] && i['cover-year'].trim()) ? i['cover-year'] : 'للعام الدراسي ٢٠٢٦ / ٢٠٢٧ م';
+        }
+
+        function buildHub() {
+            document.getElementById('hub-grid').innerHTML = SECTIONS.map((s,idx) => `
+                <button onclick="openSection(${idx})" class="group relative bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-2xl p-4 text-center shadow-sm hover:shadow-xl hover:-translate-y-1 transition min-h-[132px] flex flex-col items-center justify-center gap-2 overflow-hidden">
+                    <span class="absolute top-0 inset-x-0 h-1.5" style="background:${COLORS[s.color]}"></span>
+                    <span class="absolute top-3 right-3 text-[11px] font-bold text-gray-400">${s.n}</span>
+                    <span class="w-12 h-12 rounded-xl flex items-center justify-center text-white text-xl shadow" style="background:${COLORS[s.color]}"><i class="fa-solid ${s.icon}"></i></span>
+                    <span class="font-bold text-sm md:text-base leading-snug">${s.title}</span>
+                </button>`).join('');
+        }
+
+        function openSection(idx) {
+            currentSection = (idx + SECTIONS.length) % SECTIONS.length;
+            const s = SECTIONS[currentSection];
+            showView('app');
+            switchTab(s.tab);
+            document.getElementById('app-title').textContent = s.title;
+            document.getElementById('app-count').textContent = s.n + ' / ' + SECTIONS.length;
+            if (s.anchor) {
+                setTimeout(() => {
+                    const hd = [...document.querySelectorAll('#'+s.tab+' h3')].find(e => e.textContent.includes(s.anchor));
+                    const box = hd && (hd.closest('.glass-panel') || hd);
+                    if (box) {
+                        const y = box.getBoundingClientRect().top + window.scrollY - 80;
+                        window.scrollTo({top: y, behavior: 'smooth'});
+                        box.style.transition = 'box-shadow .4s';
+                        box.style.boxShadow = '0 0 0 3px #f59e0b';
+                        setTimeout(() => box.style.boxShadow = '', 1800);
+                    }
+                }, 60);
+            }
+        }
+        function stepSection(d) { openSection(currentSection + d); }
+
+        // --- Navigation ---
+        let currentTab = 'cover';
+        function switchTab(tabId) {
+            currentTab = tabId;
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if(btn.dataset.tab === tabId) {
+                    btn.classList.add('bg-blue-50', 'text-blue-700', 'dark:bg-slate-700', 'dark:text-blue-400');
+                    btn.classList.remove('text-gray-600', 'hover:bg-gray-100', 'dark:text-gray-300', 'dark:hover:bg-slate-700');
+                } else {
+                    btn.classList.remove('bg-blue-50', 'text-blue-700', 'dark:bg-slate-700', 'dark:text-blue-400');
+                    btn.classList.add('text-gray-600', 'hover:bg-gray-100', 'dark:text-gray-300', 'dark:hover:bg-slate-700');
+                }
+            });
+            
+            document.getElementById(tabId).querySelectorAll('textarea').forEach(autoResize);
+        }
+
+
+
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+        }
+
+        function performSearch() {
+            // Simplified logic for UI rendering
+        }
+
+        function updateDashboardStats() {
+            document.getElementById('stat-teachers').innerText = appState.teachers.length;
+            document.getElementById('stat-visits').innerText = appState.visits.length;
+            document.getElementById('stat-pd').innerText = appState.pdTimeline.length;
+            document.getElementById('stat-dir').innerText = appState.directives.length;
+        }
+
+        function updateArrayItem(collection, id, field, value) {
+            const item = appState[collection].find(i => i.id === id);
+            if (item) {
+                item[field] = (field === 'isStar') ? value === 'true' || value === true : value;
+                saveState();
+                if(collection === 'teachers') renderTeachers();
+                if(collection === 'goals') renderGoals();
+            }
+        }
+
+        function deleteArrayItem(collection, id) {
+            if(confirm('تأكيد الحذف؟')) {
+                appState[collection] = appState[collection].filter(i => i.id !== id);
+                saveState();
+                renderAllDynamic();
+            }
+        }
+
+        // --- Timetable ---
+        function updateTimetable(day, periodIndex, value) {
+            appState.timetable[day][periodIndex] = value;
+            saveState();
+        }
+        
+        function renderTimetable() {
+            const tbody = document.getElementById('timetable-tbody');
+            tbody.innerHTML = '';
+            for(const day in appState.timetable) {
+                let row = `<tr><td class="p-2 border border-yellow-200 dark:border-slate-700 font-bold bg-yellow-50/50 dark:bg-slate-800">${day}</td>`;
+                appState.timetable[day].forEach((subject, idx) => {
+                    row += `<td class="p-0 border border-yellow-200 dark:border-slate-700">
+                                <input type="text" value="${subject}" onchange="updateTimetable('${day}', ${idx}, this.value)" class="inline-input text-center w-full h-full p-2" placeholder="-">
+                            </td>`;
+                });
+                row += `</tr>`;
+                tbody.innerHTML += row;
+            }
+        }
+
+        // --- Profile Holidays ---
+        function renderHolidays() {
+            const cont = document.getElementById('holidays-container');
+            cont.innerHTML = '';
+            appState.holidays.forEach(h => {
+                cont.innerHTML += `
+                    <div class="flex items-center gap-2 bg-gray-50 dark:bg-slate-800 p-2 rounded border dark:border-slate-700">
+                        <input type="text" value="${h.name}" onchange="updateArrayItem('holidays', ${h.id}, 'name', this.value)" class="inline-input font-bold flex-1">
+                        <input type="text" value="${h.date}" onchange="updateArrayItem('holidays', ${h.id}, 'date', this.value)" class="inline-input text-gray-500 text-xs w-24">
+                        <button onclick="deleteArrayItem('holidays', ${h.id})" class="text-red-400 no-print hover:text-red-600 px-1"><i class="fa-solid fa-xmark"></i></button>
+                    </div>`;
+            });
+        }
+        function addHoliday() {
+            appState.holidays.push({ id: Date.now(), name: "مناسبة جديدة", date: "تاريخ" });
+            saveState(); renderHolidays();
+        }
+
+        // --- Teachers ---
+        function renderTeachers() {
+            const tbody = document.getElementById('teachers-tbody');
+            tbody.innerHTML = '';
+            appState.teachers.forEach(t => {
+                const loadPercent = Math.min((t.load / 35) * 100, 100);
+                tbody.innerHTML += `
+                    <tr class="hover:bg-gray-50 dark:hover:bg-slate-800 transition">
+                        <td class="p-2 border-b dark:border-slate-700">
+                            <div class="flex items-center gap-1 justify-end">
+                                <input type="checkbox" ${t.isStar ? 'checked' : ''} onchange="updateArrayItem('teachers', ${t.id}, 'isStar', this.checked)" class="no-print">
+                                ${t.isStar ? '<i class="fa-solid fa-star text-yellow-400 text-xs hidden print:inline"></i>' : ''}
+                                <input type="text" value="${t.name}" onchange="updateArrayItem('teachers', ${t.id}, 'name', this.value)" class="inline-input font-bold text-right w-full">
+                            </div>
+                        </td>
+                        <td class="p-2 border-b dark:border-slate-700"><input type="text" value="${t.classes}" onchange="updateArrayItem('teachers', ${t.id}, 'classes', this.value)" class="inline-input text-center"></td>
+                        <td class="p-2 border-b dark:border-slate-700">
+                            <div class="flex flex-col gap-1 items-center">
+                                <input type="number" value="${t.load}" onchange="updateArrayItem('teachers', ${t.id}, 'load', this.value)" class="inline-input text-center w-12 text-xs font-bold">
+                                <div class="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-1.5 flex-shrink-0 print:hidden">
+                                  <div class="bg-blue-600 h-1.5 rounded-full" style="width: ${loadPercent}%"></div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="p-2 border-b dark:border-slate-700"><input type="text" value="${t.grade}" onchange="updateArrayItem('teachers', ${t.id}, 'grade', this.value)" class="inline-input text-center w-20"></td>
+                        <td class="p-2 border-b dark:border-slate-700"><input type="number" value="${t.exp}" onchange="updateArrayItem('teachers', ${t.id}, 'exp', this.value)" class="inline-input text-center w-12"></td>
+                        <td class="p-2 border-b dark:border-slate-700"><input type="text" value="${t.priority}" onchange="updateArrayItem('teachers', ${t.id}, 'priority', this.value)" class="inline-input text-green-700 dark:text-green-400 text-xs text-center w-full"></td>
+                        <td class="p-2 border-b dark:border-slate-700 text-center no-print">
+                            <button onclick="deleteArrayItem('teachers', ${t.id})" class="text-red-500 hover:text-red-700 p-1"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>`;
+            });
+        }
+        function addTeacher(e) {
+            e.preventDefault();
+            appState.teachers.push({
+                id: Date.now(), name: document.getElementById('t-name').value, classes: document.getElementById('t-classes').value,
+                load: document.getElementById('t-load').value, grade: document.getElementById('t-grade').value,
+                exp: document.getElementById('t-exp').value || 0, priority: document.getElementById('t-priority').value, isStar: document.getElementById('t-star').checked
+            });
+            saveState(); renderTeachers(); document.getElementById('add-teacher-form').reset();
+        }
+
+        // --- PD Timeline ---
+        function renderTimeline() {
+            const wrapper = document.getElementById('timeline-wrapper');
+            wrapper.innerHTML = '';
+            appState.pdTimeline.forEach(pd => {
+                let color = pd.type === 'ورقة عمل' ? 'text-blue-600' : (pd.type === 'مشغل' ? 'text-orange-500' : 'text-green-600');
+                wrapper.innerHTML += `
+                    <div class="timeline-item relative pr-6 mb-4 print:mb-2 print:pr-4">
+                        <div class="bg-white dark:bg-slate-800 p-3 rounded-lg shadow-sm border border-gray-100 dark:border-slate-700 flex flex-col gap-2">
+                            <div class="flex justify-between items-start">
+                                <input type="text" value="${pd.date}" onchange="updateArrayItem('pdTimeline', ${pd.id}, 'date', this.value)" class="inline-input text-xs font-bold text-gray-500 bg-gray-100 dark:bg-slate-700 w-32 px-2 py-1 rounded">
+                                <button onclick="deleteArrayItem('pdTimeline', ${pd.id})" class="text-red-400 no-print hover:text-red-600"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                            <input type="text" value="${pd.title}" onchange="updateArrayItem('pdTimeline', ${pd.id}, 'title', this.value)" class="inline-input font-bold text-lg text-gray-800 dark:text-white w-full">
+                            <div class="flex flex-wrap items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                                <i class="fa-solid fa-user-tie"></i> 
+                                <input type="text" value="${pd.presenter}" onchange="updateArrayItem('pdTimeline', ${pd.id}, 'presenter', this.value)" class="inline-input font-bold w-40" placeholder="المنفذ">
+                                <span class="mx-2">|</span>
+                                <i class="fa-solid fa-users"></i>
+                                <input type="text" value="${pd.target}" onchange="updateArrayItem('pdTimeline', ${pd.id}, 'target', this.value)" class="inline-input w-40" placeholder="المستهدفون / المدة">
+                                <select onchange="updateArrayItem('pdTimeline', ${pd.id}, 'type', this.value)" class="inline-select text-xs ${color} bg-opacity-10 w-28 font-bold no-print">
+                                    <option value="ورقة عمل" ${pd.type==='ورقة عمل'?'selected':''}>ورقة عمل</option>
+                                    <option value="برنامج تدريبي" ${pd.type==='برنامج تدريبي'?'selected':''}>برنامج تدريبي</option>
+                                    <option value="مشغل" ${pd.type==='مشغل'?'selected':''}>مشغل</option>
+                                    <option value="درس تطبيقي" ${pd.type==='درس تطبيقي'?'selected':''}>درس تطبيقي</option>
+                                </select>
+                                <span class="${color} text-xs font-bold hidden print:inline">[${pd.type}]</span>
+                            </div>
+                        </div>
+                    </div>`;
+            });
+        }
+        function addPDProgram(e) {
+            e.preventDefault();
+            appState.pdTimeline.unshift({
+                id: Date.now(), date: document.getElementById('pd-date').value, title: document.getElementById('pd-title').value,
+                presenter: document.getElementById('pd-presenter').value, target: document.getElementById('pd-target').value, type: document.getElementById('pd-type').value
+            });
+            saveState(); renderTimeline(); document.getElementById('pd-form').reset();
+        }
+
+        // --- Visits (Supervisory, Peer, Applied, Discussions) ---
+        function renderVisitsAll() {
+            // Supervisory
+            const vBody = document.getElementById('visits-tbody');
+            vBody.innerHTML = '';
+            appState.visits.forEach(v => {
+                vBody.innerHTML += `
+                    <tr>
+                        <td class="p-1 border-b dark:border-slate-700 w-32">
+                            <select onchange="updateArrayItem('visits', ${v.id}, 'month', this.value)" class="inline-select text-right font-bold text-teal-600 dark:text-teal-400">
+                                ${monthsOptions.replace(`value="${v.month}"`, `value="${v.month}" selected`)}
+                            </select>
+                        </td>
+                        <td class="p-1 border-b dark:border-slate-700"><input type="text" value="${v.teacher}" onchange="updateArrayItem('visits', ${v.id}, 'teacher', this.value)" class="inline-input text-right"></td>
+                        <td class="p-1 border-b dark:border-slate-700 text-center no-print"><button onclick="deleteArrayItem('visits', ${v.id})" class="text-red-400"><i class="fa-solid fa-trash"></i></button></td>
+                    </tr>`;
+            });
+            // Peer
+            const pBody = document.getElementById('peer-visits-tbody');
+            pBody.innerHTML = '';
+            appState.peerVisits.forEach(p => {
+                pBody.innerHTML += `
+                    <tr>
+                        <td class="p-1 border dark:border-slate-600"><input type="text" value="${p.v1}" onchange="updateArrayItem('peerVisits', ${p.id}, 'v1', this.value)" class="inline-input text-center" placeholder="اسم الزائر"></td>
+                        <td class="p-1 border dark:border-slate-600"><input type="text" value="${p.v2}" onchange="updateArrayItem('peerVisits', ${p.id}, 'v2', this.value)" class="inline-input text-center" placeholder="اسم المزار"></td>
+                        <td class="p-1 border dark:border-slate-600 w-32">
+                            <select onchange="updateArrayItem('peerVisits', ${p.id}, 'month', this.value)" class="inline-select text-center">
+                                ${monthsOptions.replace(`value="${p.month}"`, `value="${p.month}" selected`)}
+                            </select>
+                        </td>
+                        <td class="p-1 border dark:border-slate-600 no-print w-8"><button onclick="deleteArrayItem('peerVisits', ${p.id})" class="text-red-400"><i class="fa-solid fa-xmark"></i></button></td>
+                    </tr>`;
+            });
+            // Applied Lessons
+            const aBody = document.getElementById('applied-lessons-tbody');
+            aBody.innerHTML = '';
+            appState.appliedLessons.forEach(al => {
+                aBody.innerHTML += `
+                    <tr>
+                        <td class="p-1 border dark:border-slate-600"><input type="text" value="${al.teacher}" onchange="updateArrayItem('appliedLessons', ${al.id}, 'teacher', this.value)" class="inline-input text-center" placeholder="المنفذ"></td>
+                        <td class="p-1 border dark:border-slate-600"><input type="text" value="${al.topic}" onchange="updateArrayItem('appliedLessons', ${al.id}, 'topic', this.value)" class="inline-input text-center" placeholder="الموضوع"></td>
+                        <td class="p-1 border dark:border-slate-600"><input type="text" value="${al.class}" onchange="updateArrayItem('appliedLessons', ${al.id}, 'class', this.value)" class="inline-input text-center" placeholder="الصف"></td>
+                        <td class="p-1 border dark:border-slate-600"><input type="text" value="${al.date}" onchange="updateArrayItem('appliedLessons', ${al.id}, 'date', this.value)" class="inline-input text-center" placeholder="التاريخ"></td>
+                        <td class="p-1 border dark:border-slate-600 no-print w-8"><button onclick="deleteArrayItem('appliedLessons', ${al.id})" class="text-red-400"><i class="fa-solid fa-xmark"></i></button></td>
+                    </tr>`;
+            });
+            // Discussions
+            const dCont = document.getElementById('discussions-container');
+            dCont.innerHTML = '';
+            appState.discussions.forEach(d => {
+                dCont.innerHTML += `
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg relative">
+                        <button onclick="deleteArrayItem('discussions', ${d.id})" class="absolute top-2 left-2 text-red-400 no-print"><i class="fa-solid fa-trash"></i></button>
+                        <input type="text" value="${d.title}" onchange="updateArrayItem('discussions', ${d.id}, 'title', this.value)" class="inline-input font-bold text-indigo-900 dark:text-indigo-200 border-b border-indigo-200 w-full mb-2" placeholder="عنوان الحلقة">
+                        <div class="flex gap-2 mb-2">
+                            <input type="text" value="${d.date}" onchange="updateArrayItem('discussions', ${d.id}, 'date', this.value)" class="inline-input text-xs text-gray-500 w-1/2" placeholder="التاريخ">
+                            <input type="text" value="${d.sup}" onchange="updateArrayItem('discussions', ${d.id}, 'sup', this.value)" class="inline-input text-xs text-gray-500 w-1/2" placeholder="بإشراف">
+                        </div>
+                        <textarea onchange="updateArrayItem('discussions', ${d.id}, 'desc', this.value)" oninput="autoResize(this)" class="inline-input w-full text-sm resize-none text-gray-700 dark:text-gray-300" placeholder="التوصيات والمخرجات...">${d.desc}</textarea>
+                    </div>`;
+            });
+        }
+        function addVisitRecord() {
+            appState.visits.push({ id: Date.now(), teacher: document.getElementById('v-teacher').value || 'معلم جديد', month: document.getElementById('v-month').value || 'أغسطس' });
+            saveState(); renderVisitsAll();
+        }
+        function addPeerVisit() {
+            appState.peerVisits.push({ id: Date.now(), v1: "", v2: "", month: "سبتمبر" });
+            saveState(); renderVisitsAll();
+        }
+        function addAppliedLesson() {
+            appState.appliedLessons.push({ id: Date.now(), teacher: "", topic: "", class: "", date: "" });
+            saveState(); renderVisitsAll();
+        }
+        function addDiscussion() {
+            appState.discussions.push({ id: Date.now(), title: "حلقة نقاش جديدة", date: "", sup: "المعلم الأول", desc: "" });
+            saveState(); renderVisitsAll();
+        }
+
+        // --- Directives (Printable Forms) ---
+        function renderDirectives() {
+            const container = document.getElementById('directives-container');
+            container.innerHTML = '';
+            appState.directives.forEach((dir, index) => {
+                container.innerHTML += `
+                    <div class="glass-panel p-8 rounded-xl bg-white dark:bg-white dark:text-black relative print-page-break">
+                        <button onclick="deleteArrayItem('directives', ${dir.id})" class="absolute top-4 left-4 text-red-500 hover:bg-red-100 p-2 rounded no-print" title="حذف الاستمارة"><i class="fa-solid fa-trash"></i></button>
+                        
+                        <div class="text-center mb-6 border-b-2 border-gray-300 pb-2">
+                            <h2 class="text-2xl font-bold mb-1 text-black">استمارة توجيه ومداولة فنية (رقم ${index+1})</h2>
+                            <p class="text-gray-700">سجل المعلم الأول</p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-x-8 gap-y-4 mb-6 text-sm font-bold text-black">
+                            <div class="flex items-end gap-2"><span>اليوم والتاريخ:</span> <input type="text" value="${dir.date}" onchange="updateArrayItem('directives', ${dir.id}, 'date', this.value)" class="flex-1 border-b border-gray-400 bg-transparent outline-none text-black px-1"></div>
+                            <div class="flex items-end gap-2"><span>اسم المعلم:</span> <input type="text" value="${dir.teacher}" onchange="updateArrayItem('directives', ${dir.id}, 'teacher', this.value)" class="flex-1 border-b border-gray-400 bg-transparent outline-none text-black px-1"></div>
+                            <div class="flex items-end gap-2"><span>المادة:</span> <input type="text" value="${dir.subject}" onchange="updateArrayItem('directives', ${dir.id}, 'subject', this.value)" class="flex-1 border-b border-gray-400 bg-transparent outline-none text-black px-1"></div>
+                            <div class="flex items-end gap-2"><span>موضوع المداولة:</span> <input type="text" value="${dir.topic}" onchange="updateArrayItem('directives', ${dir.id}, 'topic', this.value)" class="flex-1 border-b border-gray-400 bg-transparent outline-none text-black px-1"></div>
+                        </div>
+
+                        <div class="mb-4">
+                            <h3 class="font-bold mb-2 bg-gray-100 p-2 border border-gray-300 text-black">أهم الأمور التي نوقشت:</h3>
+                            <textarea onchange="updateArrayItem('directives', ${dir.id}, 'points', this.value)" oninput="autoResize(this)" class="w-full min-h-[100px] border border-gray-300 p-3 resize-none outline-none text-black bg-transparent" placeholder="اكتب محاور النقاش هنا...">${dir.points}</textarea>
+                        </div>
+
+                        <div class="mb-8">
+                            <h3 class="font-bold mb-2 bg-gray-100 p-2 border border-gray-300 text-black">التوجيهات والتوصيات:</h3>
+                            <textarea onchange="updateArrayItem('directives', ${dir.id}, 'recs', this.value)" oninput="autoResize(this)" class="w-full min-h-[100px] border border-gray-300 p-3 resize-none outline-none text-black bg-transparent" placeholder="اكتب التوجيهات هنا...">${dir.recs}</textarea>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-4 text-center mt-8 text-black font-bold">
+                            <div><p class="mb-6">توقيع المعلم</p><p>....................</p></div>
+                            <div><p class="mb-6">توقيع المعلم الأول</p><p>....................</p></div>
+                            <div><p class="mb-6">اعتماد مدير المدرسة</p><p>....................</p></div>
+                        </div>
+                    </div>`;
+            });
+        }
+        function addDirectiveForm() {
+            appState.directives.push({ id: Date.now(), date: "", teacher: "", subject: "", topic: "", points: "", recs: "" });
+            saveState(); renderDirectives();
+        }
+
+        // --- Reports (Tables) ---
+        function renderReports() {
+            const mappings = [
+                { id: 'academic', cols: ['c1', 'c2', 'c3', 'c4'] },
+                { id: 'aids', cols: ['c1', 'c2'] },
+                { id: 'meetings', cols: ['c1', 'c2', 'c3'] }
+            ];
+            
+            mappings.forEach(m => {
+                const tbody = document.getElementById(m.id + '-tbody');
+                tbody.innerHTML = '';
+                appState[m.id].forEach(row => {
+                    let tr = '<tr>';
+                    m.cols.forEach(c => {
+                        tr += `<td class="p-1 border dark:border-slate-600"><input type="text" value="${row[c] || ''}" onchange="updateArrayItem('${m.id}', ${row.id}, '${c}', this.value)" class="inline-input text-center"></td>`;
+                    });
+                    tr += `<td class="p-1 border dark:border-slate-600 no-print text-center"><button onclick="deleteArrayItem('${m.id}', ${row.id})" class="text-red-400"><i class="fa-solid fa-xmark"></i></button></td></tr>`;
+                    tbody.innerHTML += tr;
+                });
+            });
+        }
+        function addReportRow(type) {
+            appState[type].push({ id: Date.now(), c1: "", c2: "", c3: "", c4: "" });
+            saveState(); renderReports();
+        }
+
+
+        // --- Subject Plan (خطة المادة): 5 domains with goals ---
+        const PLAN_DOMAINS = [
+            {key:'الإنجاز الدراسي', icon:'fa-graduation-cap', color:'blue'},
+            {key:'التدريس والتقويم', icon:'fa-chalkboard-user', color:'green'},
+            {key:'النمو الشخصي', icon:'fa-seedling', color:'purple'},
+            {key:'القيادة والإدارة والحوكمة', icon:'fa-sitemap', color:'orange'},
+            {key:'مناخ المدرسة وبيئة التعلم', icon:'fa-school', color:'teal'}
+        ];
+        const GOAL_STATUSES = ['جاري التنفيذ','لم ينفذ','نفذ'];
+        const goalFilter = {domain:'', status:'', from:'', to:''};
+        const esc = v => String(v ?? '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+        function initGoalFilters() {
+            const sel = document.getElementById('gf-domain');
+            if (sel && sel.options.length <= 1) PLAN_DOMAINS.forEach(d => sel.insertAdjacentHTML('beforeend', `<option value="${d.key}">${d.key}</option>`));
+        }
+        function setGoalFilter() {
+            goalFilter.domain = document.getElementById('gf-domain').value;
+            goalFilter.status = document.getElementById('gf-status').value;
+            goalFilter.from = document.getElementById('gf-from').value;
+            goalFilter.to = document.getElementById('gf-to').value;
+            renderGoals();
+        }
+        function clearGoalFilter() {
+            ['gf-domain','gf-status','gf-from','gf-to'].forEach(id => document.getElementById(id).value = '');
+            setGoalFilter();
+        }
+        function addGoal(domain) {
+            appState.goals.push({ id: Date.now(), domain, text: '', status: 'لم ينفذ', from: '', to: '' });
+            saveState(); renderGoals();
+        }
+        function goalMatches(g) {
+            if (goalFilter.status && g.status !== goalFilter.status) return false;
+            if (goalFilter.from && g.to && g.to < goalFilter.from) return false;
+            if (goalFilter.to && g.from && g.from > goalFilter.to) return false;
+            return true;
+        }
+        function renderGoals() {
+            const cont = document.getElementById('goals-container');
+            if (!cont) return;
+            const badge = {'نفذ':'bg-green-100 text-green-700','جاري التنفيذ':'bg-yellow-100 text-yellow-700','لم ينفذ':'bg-red-100 text-red-700'};
+            cont.innerHTML = PLAN_DOMAINS.map((d, i) => {
+                if (goalFilter.domain && goalFilter.domain !== d.key) return '';
+                const all = appState.goals.filter(g => g.domain === d.key);
+                const list = all.filter(goalMatches);
+                const c = COLORS[d.color];
+                const done = all.filter(g => g.status === 'نفذ').length;
+                const rows = list.map((g, k) => `
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-2 items-center bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg p-3">
+                        <span class="md:col-span-1 text-center font-bold text-gray-400 text-sm">${k+1}</span>
+                        <div class="md:col-span-5"><label class="text-[11px] text-gray-500 block">الهدف</label><textarea onchange="updateArrayItem('goals', ${g.id}, 'text', this.value)" oninput="autoResize(this)" rows="2" class="form-input text-sm resize-none" placeholder="اكتب الهدف...">${esc(g.text)}</textarea></div>
+                        <div class="md:col-span-2"><label class="text-[11px] text-gray-500 block">آلية التنفيذ</label>
+                            <select onchange="updateArrayItem('goals', ${g.id}, 'status', this.value)" class="form-select text-sm font-bold ${badge[g.status]||''}">${GOAL_STATUSES.map(st => `<option value="${st}" ${g.status===st?'selected':''}>${st}</option>`).join('')}</select></div>
+                        <div class="md:col-span-1"><label class="text-[11px] text-gray-500 block">من</label><input type="date" value="${esc(g.from)}" onchange="updateArrayItem('goals', ${g.id}, 'from', this.value)" class="form-input text-xs px-1"></div>
+                        <div class="md:col-span-1"><label class="text-[11px] text-gray-500 block">إلى</label><input type="date" value="${esc(g.to)}" onchange="updateArrayItem('goals', ${g.id}, 'to', this.value)" class="form-input text-xs px-1"></div>
+                        <div class="md:col-span-2 text-center no-print"><button onclick="deleteArrayItem('goals', ${g.id})" class="text-red-500 hover:text-red-700 p-1" title="حذف الهدف"><i class="fa-solid fa-trash"></i></button></div>
+                    </div>`).join('');
+                const empty = `<p class="text-sm text-gray-400 text-center py-4">${all.length ? 'لا توجد أهداف مطابقة للفلاتر.' : 'لم تتم إضافة أهداف لهذا المجال بعد.'}</p>`;
+                return `
+                <div class="glass-panel rounded-xl overflow-hidden" style="border-top:4px solid ${c}">
+                    <div class="flex flex-wrap items-center justify-between gap-2 p-4 border-b border-gray-200 dark:border-slate-700">
+                        <h3 class="font-bold text-lg flex items-center gap-2" style="color:${c}"><span class="w-9 h-9 rounded-lg text-white flex items-center justify-center text-base" style="background:${c}"><i class="fa-solid ${d.icon}"></i></span> ${i+1}. ${d.key}</h3>
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs text-gray-500">الأهداف: <b>${all.length}</b> • المنفذة: <b>${done}</b></span>
+                            <button onclick="addGoal('${d.key}')" class="no-print text-sm text-white px-3 py-1.5 rounded-lg font-bold hover:opacity-90" style="background:${c}"><i class="fa-solid fa-plus ml-1"></i> إضافة هدف</button>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-2">${rows || empty}</div>
+                </div>`;
+            }).join('');
+            cont.querySelectorAll('textarea').forEach(autoResize);
+        }
+
+        // --- Init & Print Logic ---
+        function renderAllDynamic() {
+            renderHolidays();
+            renderTeachers();
+            renderTimetable();
+            renderTimeline();
+            renderVisitsAll();
+            renderDirectives();
+            renderReports();
+            renderGoals();
+            loadInputs(); 
+        }
+
+        function prepareAndPrint() {
+            document.querySelectorAll('textarea').forEach(autoResize);
+            window.print();
+        }
+
+        window.onload = () => {
+            initGoalFilters();
+            renderAllDynamic();
+            buildHub();
+            refreshLanding();
+            
+            document.querySelectorAll('textarea').forEach(el => {
+                el.addEventListener('input', function() { autoResize(this); });
+            });
+        };
+    </script>
+</body>
+</html>
